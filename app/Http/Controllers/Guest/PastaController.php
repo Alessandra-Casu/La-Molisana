@@ -15,7 +15,8 @@ class PastaController extends Controller
      */
     public function index()
     {
-        $pastas = Pasta::all(); //SELECT * FROM 'pastas'
+        // $pastas = Pasta::all(); //SELECT * FROM 'pastas'
+        $pastas = Pasta::paginate(5); 
 
         return view('pastas.index', compact('pastas'));
     }
@@ -27,7 +28,9 @@ class PastaController extends Controller
      */
     public function create()
     {
-        //
+        //ritorna la lista che continee il form
+
+        return view('pastas.create');
     }
 
     /**

@@ -3,6 +3,8 @@
 @section('contents')
 <h1>Paste</h1>
 
+<a class="btn btn-primary" href="{{ route('pastas.create') }}"> Nuovo</a>
+
 <table class="table table-striped">
     <thead>
       <tr>
@@ -33,5 +35,17 @@
       
     </tbody>
   </table>
+
+  {{ $pastas->links() }}
+
+ 
+  {{-- Paginator fatto senza bootstrapp --}}
+  {{-- <div>
+    <ul>
+      @for($i = 1; $i <= $pastas->lastPage(); $i++ )
+      <li><a href="/pastas?page={{ $i }}"> {{ $i }} </a></li>
+      @endfor
+    </ul>
+  </div> --}}
 @endsection
 
