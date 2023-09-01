@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pastas', function (Blueprint $table) {
             $table->id();
 
-            $table->string("src", 200);
+            $table->string("src", 200)->nullable();
             $table->string("titolo", 100); 
             $table->string("tipo", 20);
             $table->tinyInteger("cottura")->unsigned(); 

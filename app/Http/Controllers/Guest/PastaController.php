@@ -41,7 +41,33 @@ class PastaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validare i dati
+        $request->validate([
+            'src'               => 'string|max:200',
+            'titolo'            => 'required|string|min:5|max:100|',
+            'tipo'              => 'required|string|max:20',
+            'cottura'           => 'required|integer|min:1|max:255',
+            'peso'              => 'required|integer|min:20|max:2000',
+            'descrizione'       => 'string',
+            ]
+        );
+
+        $data = $request->all();
+
+        //salvare i dati nel database
+        $newPasta = new Pasta();
+        $newPasta->src          = $data['src'];
+        $newPasta->titolo       = $data['titolo'];
+        $newPasta->tipo         = $data['tipo'];
+        $newPasta->cottura      = $data['cottura'];
+        $newPasta->peso         = $data['peso'];
+        $newPasta->descrizione  = $data['descrizione'];
+        $newPasta->save();
+
+        
+        // $newPasta = Pasta::create($data);
+
+        return redirect()->route('pastas.show', ['pasta' => $newPasta->id]); 'Salvataggio eseguito con successo';
     }
 
     /**
